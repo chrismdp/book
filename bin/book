@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'book'
+require 'gli'
+
+include GLI
+
+desc 'Create new book folder structure'
+arg_name 'dir_name'
+long_desc 'This command starts you off using \'book\' by creating a new folder structure with some dummy files. It takes the directory name you would like to store your book in.'
+command [:create, :init] do |c|
+  c.desc "Don't create sample documents"
+  c.switch [:n,:nosamples]
+
+  c.action do |globals, options, args|
+    raise "Directory name is required" if args.empty?
+  end
+end
+
+GLI.run(ARGV)
