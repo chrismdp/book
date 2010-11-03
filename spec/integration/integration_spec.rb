@@ -22,5 +22,14 @@ describe "'book' command line tool" do
       File.should exist(working_folder + '/mybook/documents/introduction.md')
       File.should exist(working_folder + '/mybook/book.rb')
     end
+
+    it "copies over the skeleton files" do
+      ["/documents/introduction.md",
+       "/book.rb"].each do |f|
+        first = working_folder + f
+        second = File.expand_path(File.join(__FILE__, '..', '..', '..', 'skeleton', f))
+        File.open(first, 'r').read.should == File.open(second, 'r').read
+       end
+    end
   end
 end
