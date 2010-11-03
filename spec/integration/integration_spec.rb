@@ -11,7 +11,7 @@ describe "'book' command line tool" do
   end
 
   after do
-    FileUtils.rm_rf(working_folder)
+    #FileUtils.rm_rf(working_folder)
   end
 
   context "creation" do
